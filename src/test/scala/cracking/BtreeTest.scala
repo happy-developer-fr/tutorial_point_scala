@@ -2,6 +2,8 @@ package cracking
 
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.collection.immutable
+
 class BtreeTest extends FlatSpec with Matchers {
 
   "Create a node with value 1" should "insert in first value" in {
@@ -30,8 +32,9 @@ class BtreeTest extends FlatSpec with Matchers {
 
   "Print 2,3,1" should "insert 1 in left and 3 in right" in {
     var btree = new Btree()
-    btree insert 2 insert 3 insert 1
-    println(btree printByLine)
+    btree insert(List(7,5,0,1,2,3,4,6,13,12,11,10,9,8,14,19,17,15,16,18))
+    println(btree printByLine false)
+    println(btree printByLine true)
   }
 
 }
