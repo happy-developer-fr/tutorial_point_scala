@@ -14,8 +14,8 @@ class BtreeTest extends FlatSpec with Matchers {
     var btree = new Btree()
     btree insert 2 insert 3 insert 1
     btree.rootNode.value should be (2)
-    btree.rootNode.nodeLeft.value should be (1)
-    btree.rootNode.nodeRight.value should be (3)
+    btree.rootNode.nodeLeft.get.value should be (1)
+    btree.rootNode.nodeRight.get.value should be (3)
   }
 
   "isPresent 2 in 3,5,12" should "return false" in {
@@ -26,6 +26,12 @@ class BtreeTest extends FlatSpec with Matchers {
   "isPresent 3 in 3,5,12" should "return true" in {
     var btree = Btree.from(List(3,5,12))
     btree has 3 should be (true)
+  }
+
+  "Print 2,3,1" should "insert 1 in left and 3 in right" in {
+    var btree = new Btree()
+    btree insert 2 insert 3 insert 1
+    println(btree printByLine)
   }
 
 }
