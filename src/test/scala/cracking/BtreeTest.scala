@@ -30,11 +30,35 @@ class BtreeTest extends FlatSpec with Matchers {
     btree has 3 should be (true)
   }
 
-  "Print 2,3,1" should "insert 1 in left and 3 in right" in {
+  "Print by line" should "insert 1 in left and 3 in right" in {
     var btree = new Btree()
     btree insert(List(7,5,0,1,2,3,4,6,13,12,11,10,9,8,14,19,17,15,16,18))
     println(btree printByLine false)
     println(btree printByLine true)
+  }
+
+  "Print by spaces" should "insert 1 in left and 3 in right" in {
+    var btree = new Btree()
+    btree insert(List(7,5,0,1,2,3,4,6,13,12,11,10,9,8,14,19,17,15,16,18))
+    println(btree printBySpaces false)
+    println(btree printBySpaces true)
+  }
+
+  "Print by concat 1" should "print 1" in {
+    var btree = new Btree()
+    btree.insert(List(1))
+      .rootNode
+      .printByConcat(false) should be "1"
+  }
+
+  "Print by concat 1" should "print 1" in {
+    var btree = new Btree()
+    btree.insert(List(2,1,3))
+      .rootNode
+      .printByConcat(false) should be
+        """ 1
+          |2 3
+        """.stripMargin
   }
 
 }
